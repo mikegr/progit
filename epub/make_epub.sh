@@ -15,15 +15,15 @@ fi
 
 PREREQ_MISSING=0
 if [ "$GROOVY_BIN" == "" ]; then
-    echo "You must download and install Groovy"
+    echo "You must download and install Groovy and make sure it is in your PATH"
     PREREQ_MISSING=1
 fi
 if [ "$EBOOK_CONVERT_BIN" == "" ]; then
-    echo "You must download and install Calibre"
+    echo "You must download and install Calibre and make sure it is in your PATH"
     PREREQ_MISSING=1
 fi
 if [ "$MARKDOWN_BIN" == "" ]; then
-    echo "You must download and install Markdown"
+    echo "You must download and install Markdown and make sure it is in your PATH"
     PREREQ_MISSING=1
 fi
 
