@@ -1,0 +1,8 @@
+Download and install groovy:
+http://groovy.codehaus.org/Installing+Groovy
+
+Install markdown
+sudo cpan install Text::Markdown
+
+Download and install Calibre
+http://calibre-ebook.com/
