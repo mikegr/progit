@@ -54,8 +54,8 @@ langDir.eachDir { dir ->
   dir.eachFileMatch(markdownFile) { file ->
     def preparedFile  = new File(dest, file.getName())
     println "Processing ${file}"
-    preparedFile.withWriter { writer ->
-      file.withReader { reader -> 
+    preparedFile.withWriter('UTF-8') { writer ->
+      file.withReader('UTF-8') { reader -> 
 	String line = null
 	while ( (line = reader.readLine()) != null) {
 	  def matches = line =~ /^\s*Insert\s(.*)/
@@ -92,8 +92,8 @@ langDir.eachDir { dir ->
   } //file
 } //dir 
 def indexFile = new File(dest, "progit.html")
-indexFile.withWriter { writer -> 
-  writer << """<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Pro Git - professional version control</title></head><body>"""
+indexFile.withWriter('UTF-8') { writer -> 
+  writer << """<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Pro Git - professional version control</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /></head><body>"""
   filesForIndex.sort().each { file ->
     def fileName = file.getName()
     file.eachLine {
@@ -109,9 +109,9 @@ def cmd = ["""ebook-convert""", indexFile.getPath(), epubFile.getPath(),
   """--cover""", """title.png""", 
   """--authors""", "Scott Chacon", 
   "--comments", "licensed under the Creative Commons Attribution-Non Commercial-Share Alike 3.0 license", 
+  "--no-chapters-in-toc",
+  "--toc-threshold", "15",
   "--level1-toc", "//h:h1", 
-  "--level2-toc", "//h:h2", 
-  "--level3-toc", "//h:h3" 
 ]
 def proc = cmd.execute();
 proc.waitFor();
