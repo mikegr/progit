@@ -1,7 +1,7 @@
 #!/bin/sh
 
 OS=$(uname -s)
-if [ "$OS" == "Darwin" ]; then
+if [ "$OS" = "Darwin" ]; then
     PATH=/Applications/calibre.app/Contents/console.app/Contents/MacOS:$PATH
 fi
 
@@ -9,20 +9,20 @@ fi
 GROOVY_BIN=$(which groovy)
 EBOOK_CONVERT_BIN=$(which ebook-convert)
 MARKDOWN_BIN=$(which markdown)
-if [ "$MARKDOWN_BIN" == "" ]; then
+if [ "$MARKDOWN_BIN" = "" ]; then
     MARKDOWN_BIN=$(which Markdown.pl)
 fi
 
 PREREQ_MISSING=0
-if [ "$GROOVY_BIN" == "" ]; then
+if [ "$GROOVY_BIN" = "" ]; then
     echo "You must download and install Groovy and make sure it is in your PATH"
     PREREQ_MISSING=1
 fi
-if [ "$EBOOK_CONVERT_BIN" == "" ]; then
+if [ "$EBOOK_CONVERT_BIN" = "" ]; then
     echo "You must download and install Calibre and make sure it is in your PATH"
     PREREQ_MISSING=1
 fi
-if [ "$MARKDOWN_BIN" == "" ]; then
+if [ "$MARKDOWN_BIN" = "" ]; then
     echo "You must download and install Markdown and make sure it is in your PATH"
     PREREQ_MISSING=1
 fi
